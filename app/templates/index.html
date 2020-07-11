@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="static/css/pump.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
+    <title>Title</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script type=text/javascript>
+
+        // Pump 0
+        $(function () {
+            $('a#pump0').bind('click', function () {
+                text = $(this)[0].innerText
+                id = $(this)[0].id
+                var button = {id: id, command: text}
+                $.ajax({
+                    url: '/start_pump0',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(button),
+                    success: function () {
+                        if (text === "Run ") {
+                            $("#bn-pump0").text('Stop');
+                            $("#bn-pump0").removeClass('btn-success').addClass('btn-danger');
+                            $("#img-pump0").removeClass('notransition');
+                        } else {
+                            $("#bn-pump0").text('Run');
+                            $("#bn-pump0").removeClass('btn-danger').addClass('btn-success');
+                            $("#img-pump0").addClass('notransition');
+                        }
+                    },
+                    error: function () {
+                        console.log("error");
+                    }
+                });
+            });
+        });
+
+        // Pump1
+        $(function () {
+            $('a#pump1').bind('click', function () {
+                text = $(this)[0].innerText
+                id = $(this)[0].id
+                var button = {id: id, command: text}
+                $.ajax({
+                    url: '/start_pump1',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(button),
+                    success: function () {
+                        if (text === "Run ") {
+                            $("#bn-pump1").text('Stop');
+                            $("#bn-pump1").removeClass('btn-success').addClass('btn-danger');
+                            $("#img-pump1").removeClass('notransition');
+                        } else {
+                            $("#bn-pump1").text('Run');
+                            $("#bn-pump1").removeClass('btn-danger').addClass('btn-success');
+                            $("#img-pump1").addClass('notransition');
+                        }
+                    },
+                    error: function () {
+                        console.log("error");
+                    }
+                });
+            });
+        });
+
+        // Pump2
+        $(function () {
+            $('a#pump2').bind('click', function () {
+                text = $(this)[0].innerText
+                id = $(this)[0].id
+                var button = {id: id, command: text}
+                $.ajax({
+                    url: '/start_pump2',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(button),
+                    success: function () {
+                        if (text === "Run ") {
+                            $("#bn-pump2").text('Stop');
+                            $("#bn-pump2").removeClass('btn-success').addClass('btn-danger');
+                            $("#img-pump2").removeClass('notransition');
+                        } else {
+                            $("#bn-pump2").text('Run');
+                            $("#bn-pump2").removeClass('btn-danger').addClass('btn-success');
+                            $("#img-pump2").addClass('notransition');
+                        }
+                    },
+                    error: function () {
+                        console.log("error");
+                    }
+                });
+            });
+        });
+
+        // Pump3
+        $(function () {
+            $('a#pump3').bind('click', function () {
+                text = $(this)[0].innerText
+                id = $(this)[0].id
+                var button = {id: id, command: text}
+                $.ajax({
+                    url: '/start_pump3',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(button),
+                    success: function () {
+                        if (text === "Run ") {
+                            $("#bn-pump3").text('Stop');
+                            $("#bn-pump3").removeClass('btn-success').addClass('btn-danger');
+                            $("#img-pump3").removeClass('notransition');
+                        } else {
+                            $("#bn-pump3").text('Run');
+                            $("#bn-pump3").removeClass('btn-danger').addClass('btn-success');
+                            $("#img-pump3").addClass('notransition');
+                        }
+                    },
+                    error: function () {
+                        console.log("error");
+                    }
+                });
+            });
+        });
+
+
+        $(function () {
+            $('a#calibrate').bind('click', function () {
+                text = $(this)[0].innerText
+                id = $(this)[0].id
+                var button = {id: id, command: text}
+                // Get the modal
+                $('#exampleModal').modal('toggle')
+                $.ajax({
+                    url: '/calibrate',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(button),
+                    success: function () {
+                        console.log("success")
+                    },
+                    error: function () {
+                        console.log("error");
+                    }
+                });
+            });
+        });
+
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+
+
+    </script>
+
+</head>
+<body>
+
+<table style="width:60%">
+    <tr>
+        <td>
+            <div class="card border-secondary mb-3">
+                <div class="card-header" style="font-size:30px">Water
+                    <a href=# id=calibrate>
+                        <button type="button" class="btn btn-warning" style="float: right;font-size : 30px;">⚙</button>
+                    </a>
+                </div>
+
+                <div class="card-body">
+                    <img id="img-pump0" class="pump notransition" src="static/img/pump.svg">
+                </div>
+
+                <div class="card-header">
+                    <a href=# id=pump0>
+                        <button type="button" id="bn-pump0" class="btn btn-success" style="width:49%">Run</button>
+                    </a>
+
+                </div>
+            </div>
+        </td>
+
+        <td>
+            <div class="card border-secondary mb-3">
+                <div class="card-header" style="font-size:30px ">Indicator
+                    <a href=# id=calibrate>
+                            <button type="button" class="btn btn-warning" style="float: right;font-size : 30px;">⚙</button>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <img id="img-pump1" class="pump notransition" src="static/img/pump.svg">
+                </div>
+
+                <div class="card-header">
+                    <a href=# id=pump1>
+                        <button type="button" id="bn-pump1" class="btn btn-success" style="width:49%">Run</button>
+                    </a>
+                </div>
+            </div>
+        </td>
+
+        <td>
+            <div class="card border-secondary mb-3">
+                <div class="card-header">HNO3</div>
+                <div class="card-body">
+                    <img id="img-pump2" class="pump notransition" src="static/img/pump.svg">
+                </div>
+
+                <div class="card-header">
+                    <a href=# id=pump2>
+                        <button type="button" id="bn-pump2" class="btn btn-success" style="width:49%">Run</button>
+                    </a>
+
+                    <a href=# id=pump2-cal>
+                        <button type="button" class="btn btn-warning" style="width:49%;">Calibrate</button>
+                    </a>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="card border-secondary mb-3">
+                <div class="card-header">Drain</div>
+                <div class="card-body">
+                    <img id="img-pump3" class="pump notransition" src="static/img/pump.svg">
+                </div>
+
+                <div class="card-header">
+                    <a href=# id=pump3>
+                        <button type="button" id="bn-pump3" class="btn btn-success" style="width:49%">Run</button>
+                    </a>
+
+                    <a href=# id=pump3-cal>
+                        <button type="button" class="btn btn-warning" style="width:49%;">Calibrate</button>
+                    </a>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+<div class="modal" id="CalibrateModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 40%;" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="Calibrate pumps">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <select class="custom-select">
+                        <option value="1">Water</option>
+                        <option value="2">Indicator</option>
+                        <option value="3">HNO3</option>
+                        <option value="4">Drain</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group has-success" id="ml-cal">
+                    <label class="form-control-label" for="inputSuccess1">ml</label>
+                    <input type="text" value="correct value" class="form-control is-valid" id="inputValid">
+                    <div class="valid-feedback">Success! You've done it.</div>
+                </div>
+                <a href=# id=pump-cal>
+                    <button type="button" id="bn-pump-cal" class="btn btn-success" style="width:49%">Run</button>
+                </a>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

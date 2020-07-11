@@ -1,0 +1,38 @@
+img.pump {
+  animation: 4s linear 0s normal none infinite running pump;
+  -webkit-animation: 4s linear 0s normal none infinite running pump;
+  width: 70%;
+  stroke: transparent;
+  stroke-width: 1;
+  fill:green;
+  fill-opacity:0.5;
+
+}
+
+.notransition {
+  animation: none !important;
+  -webkit-animation: none !important;
+  width: 70%;
+  stroke: transparent;
+  stroke-width: 1;
+  fill:green;
+  fill-opacity:0.5;
+}
+
+@keyframes pump {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes pump {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
